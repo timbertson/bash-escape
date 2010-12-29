@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type='text/xsl' href='interface.xsl'?>
+<interface uri="http://gfxmonk.net/dist/0install/bash_escape.xml" xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+	<name>bash_escape</name>
+	<summary>python functions for escaping bash output</summary>
+	<description>
+	</description>
+
+	<group>
+		<implementation id="sha1new=3ee529341f9292a793755873dbdd40de16ccd340" released="2010-12-29" version="0.0.1">
+		
+    <manifest-digest sha256="0107fe9955565c67f2ba32b8266e2b8995ee827169e48ade61a3d7477dcfbda9"/>
+    <archive href="http://gfxmonk.net/dist/0install/bash_escape/bash_escape-0.0.1.tgz" size="527"/>
+  </implementation>
+	</group>
+</interface>
