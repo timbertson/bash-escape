@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import re
 def escape(s, inside=None):
 	s = repr(str(s))[1:-1]
 	s = "$'%s'" % (s,)
@@ -11,9 +10,7 @@ def bash_array(a):
 	return "( %s )" % (" ".join(map(escape, a)),)
 
 if __name__ == '__main__':
-	import sys
-	sys.exit(0)
-	import os, string
+	import string
 	expected = string.printable
 	import subprocess
 	def check_matches(expected, s):
@@ -24,8 +21,12 @@ if __name__ == '__main__':
 		print repr(result)
 		assert result == expected
 		print "--"
+	
+	def check(s, inside=None):
+		check_matches(s, escape(s, inside=inside))
 	check_matches(expected, escape(expected))
 	check_matches(expected, "'%s'" % (escape(expected, inside="'")))
 	check_matches(expected, '"%s"' % (escape(expected, inside='"')))
-	check_matches('', escape(''))
+	check('')
+	check('  \n\t  ')
 	print "SUCCESS!"
