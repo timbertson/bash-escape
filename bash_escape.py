@@ -1,6 +1,13 @@
 #!/usr/bin/env python
+import re
+
 def escape(s, inside=None):
-	s = repr(str(s))[1:-1]
+	s = re.sub('([\'\"\\?])', r'\\\1', s)
+	s = s.replace('\t', r'\t')
+	s = s.replace('\n', r'\n')
+	s = s.replace('\r', r'\r')
+	s = s.replace('\x0b', r'\x0b')
+	s = s.replace('\x0c', r'\x0c')
 	s = "$'%s'" % (s,)
 	if inside:
 		s = "%s%s%s" % (inside, s, inside)
@@ -14,10 +21,11 @@ if __name__ == '__main__':
 	expected = string.printable
 	import subprocess
 	def check_matches(expected, s):
-		print repr(s)
+		print s
 		p = subprocess.Popen(['bash', '-c', 'echo -n ' + s], stdout=subprocess.PIPE)
 		p.wait()
 		result = p.stdout.read()
+		print repr(expected)
 		print repr(result)
 		assert result == expected
 		print "--"
@@ -28,5 +36,7 @@ if __name__ == '__main__':
 	check_matches(expected, "'%s'" % (escape(expected, inside="'")))
 	check_matches(expected, '"%s"' % (escape(expected, inside='"')))
 	check('')
+	check("that's good")
+	check("'s okay")
 	check('  \n\t  ')
 	print "SUCCESS!"
