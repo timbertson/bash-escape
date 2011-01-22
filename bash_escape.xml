@@ -11,5 +11,9 @@
 			<manifest-digest sha256="0107fe9955565c67f2ba32b8266e2b8995ee827169e48ade61a3d7477dcfbda9"/>
 			<archive href="http://gfxmonk.net/dist/0install/bash_escape/bash_escape-0.0.1.tgz" size="527"/>
 		</implementation>
+		<implementation id="sha1new=36dece07a65c030b2b81709fa55585fcbe45250f" released="2011-01-23" version="0.0.2">
+    <manifest-digest sha256="2323333a20f3d635276445c1a49cf222831b06ba974d009b965ba9ddeabe3acc"/>
+    <archive href="http://gfxmonk.net/dist/0install/bash_escape/bash_escape-0.0.2.tgz" size="621"/>
+  </implementation>
 	</group>
 </interface>
